@@ -1,0 +1,96 @@
+\documentclass[a4paper, ngerman]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{layout}    %  um die Seitenränder als Bild auszugeben
+\usepackage[left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{mathtools}
+
+\title{Der Satz von Hadamard}
+\subtitle{Seminar Klassische Sätze der Differentialgeometrie (WS 21/22)}
+\author{Lukas Norkowski}
+\date{16. Dezember 2021}
+
+\input{mathcommands.tex}
+
+% Disable \pause command
+\newcommand{\pause}{}
+
+\newtheoremstyle{mytheorem}% hnamei
+{10pt}   % ABOVESPACE
+  {\topsep}   % BELOWSPACE
+  {\itshape}  % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+  {}          % CUSTOM-HEAD-SPEC
+	
+\theoremstyle{mytheorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{satz}[theorem]{Satz}
+\newtheorem{hsatz}[theorem]{Hilfssatz}
+\newtheorem{corollary}[theorem]{Korollar}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\pagenumbering{gobble}
+
+\begin{document}
+	\maketitle
+	\thispagestyle{empty}	
+
+\begin{theorem}[Hadamard]
+	\input{thms/hadamard}
+\end{theorem}
+
+\subsection*{Konjugierte Punkte und die Exponentialabbildung}
+
+\begin{definition}
+	\input{thms/conjugatepointsdef.tex}
+\end{definition}
+
+\begin{lemma}
+	\input{thms/criticalpointslemma.tex}
+\end{lemma}
+
+\begin{satz}
+	\input{thms/localdiffeolemma.tex}
+\end{satz}
+
+\subsection*{Überlagerungstheorie}
+
+\begin{definition}
+	\input{thms/deflifting.tex}
+\end{definition}
+
+\begin{hsatz}
+	\input{thms/liftingarcstocoveringprop.tex}
+\end{hsatz}
+
+\begin{hsatz}
+	\input{thms/coveringsliftpaths.tex}
+\end{hsatz}
+
+\begin{hsatz}
+	\input{thms/coveringmaptohomeo.tex}
+\end{hsatz}
+
+\begin{satz}
+	\input{thms/coveringlemma.tex}
+\end{satz}
+
+\subsection*{Literatur}
+\begin{enumerate}
+	\item \emph{Riemannian Geometry}. Manfredo do Carmo. Birkhäuser. 1992.
+	\item \emph{Differential Geometry of Curves and Surfaces}. Manfredo do Carmo. Prentice-Hall, Inc. 1976.
+\end{enumerate}
+
+
+\end{document}

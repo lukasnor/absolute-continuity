@@ -1,0 +1,189 @@
+\documentclass[ngerman
+			,handout
+			]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usetheme[numbering=none]{focus}
+\usepackage{nameref}
+\usepackage{csquotes}
+\usepackage{mathtools}
+\usepackage{verbatim}
+
+\title{Der Satz von Hadamard}
+%\subtitle{Seminar Klassische Sätze der Differentialgeometrie (WS 21/22)}
+\author{Lukas Norkowski}
+\date{16. Dezember 2021} 
+
+\input{mathcommands.tex}
+
+\hyphenation{Ex-po-nen-tial-ab-bil-dung}
+\hyphenation{Über-la-ge-run-gen}
+
+\usefonttheme[onlymath]{serif}
+\renewcommand<>{\emph}[1]{{\only#2{\em}#1}}
+\theoremstyle{definition}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{satz}[theorem]{Theorem}
+\newtheorem*{remark}{\translate{Remark}}
+\newtheorem*{reminder}{\translate{Reminder}}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem*{cor*}{Corollary}
+\newtheorem{proposition}[theorem]{\translate{Proposition}}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}	
+
+\begin{frame}{Gliederung}
+\tableofcontents
+\end{frame}
+
+
+\section{Einleitung und Motivation}
+\label{Einleitung und Motivation}
+
+\begin{frame}{Das Ziel}
+	\begin{satz}[Hadamard]
+		\pause
+		\input{thms/hadamard.tex}
+	\end{satz}
+\end{frame}
+
+\begin{frame}{\enquote{Gegenbeispiele}}
+	
+\end{frame}
+
+\begin{frame}{Noch einmal die Gliederung}
+	\tableofcontents
+\end{frame}
+
+
+\section{Konjugierte Punkte und die Exponentialabbildung}
+\label{Konjugierte Punkte und die Exponentialabbildung}
+
+\begin{frame}{Konjugierte Punkte}
+	\begin{definition}
+		\pause
+		\input{thms/conjugatepointsdef.tex}
+	\end{definition}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Konjugierte Punkte und die Exponential-\\abbildung}
+	\begin{Lemma}
+		\pause
+		\input{thms/criticalpointslemma.tex}
+	\end{Lemma}
+	%\begin{remark}
+	%	Ein Jacobifeld $J$ entlang einer Geodätischen $\gamma\colon[0,l]\to M$ mit %$J(0)=0$ genügt der Formel
+	%	\begin{equation*}
+	%		J(t)= \d (\exp_{\gamma(0)})_{t\gamma'(0)}(tJ'(0)),\quad t\in[0,l].
+	%	\end{equation*}
+	%\end{remark}
+\end{frame}
+
+\begin{frame}{Konjugierte Punkte und nicht-positive Schnittkrümmung}
+	\begin{Satz}
+		\pause
+		\input{thms/localdiffeolemma.tex}
+	\end{Satz}
+\end{frame}
+
+
+\section{Überlagerungstheorie}
+\label{ueberlagerungstheorie}
+
+\begin{frame}{Wiederholung und Neues}
+	Im Folgenden sind $B$ und $\widetilde{B}$ nicht-leere topologische Räume.
+	\begin{definition}[Überlagerung]
+		\pause
+		\input{thms/defcovering.tex}
+	\end{definition}
+	\pause
+	\begin{definition}[Pfadhebungseigenschaft]
+		\pause
+		\input{thms/deflifting.tex}
+ 	\end{definition}
+\end{frame}
+
+\begin{frame}{Überlagerungen heben Pfade}
+	\begin{Satz}
+		\pause
+		\input{thms/coveringsliftpaths.tex}
+	\end{Satz}
+\end{frame}
+
+\begin{frame}{Pfadhebungen und lokale Homöomorphismen}
+	% Wir wollen aus einem lokalen Diffeomorphismus einen globalen Diffeomorphismus machen.
+	\begin{Satz}
+		\pause
+		\input{thms/coveringmaptohomeo.tex}
+	\end{Satz}
+	\pause
+	\begin{remark}
+		\pause
+		$\pi$ kann zum Beispiel eine Überlagerungsabbildung sein.
+	\end{remark}
+\end{frame}
+
+
+\begin{frame}{\nameref{ueberlagerungstheorie}}
+	% Für den folgenden Satz benötigen wir eine Aussage über lokale Homöomorphismen mit der Pfadhochhebungseigenschaft.
+	\begin{Satz}
+		\pause
+		\input{thms/liftingarcstocoveringprop.tex}
+	\end{Satz}
+	\pause
+	\begin{remark}
+		\pause
+		Jede Mannigfaltigkeit ist sowohl lokal wegzusammenhängend als auch lokal einfach zusammenhängend.
+	\end{remark}
+\end{frame}
+
+\begin{frame}{Lokale Diffeomorphismen werden zu Überlagerungen}
+	\begin{Satz}
+		\pause
+		\input{thms/coveringlemma.tex}
+	\end{Satz}
+	%\pause
+	%\begin{corollary}
+	%	Ist $M$ eine vollständige Riemannsche Mannigfaltigkeit \pause mit %nicht-positiver Schnittkrümmung, \pause $p\in M$, \pause dann ist %$\exp_p\colon T_pM\to M$ eine Überlagerung \pause (mit einer geeigneten %Metrik auf $T_p M$).
+	%\end{corollary}
+\end{frame}
+
+
+% Hier sollte alles nur noch kurz eingeblendet werden.
+\section{Der Satz von Hadamard}
+\label{Der Satz von Hadamard}
+
+\renewcommand{\pause}{}
+\begin{frame}{\nameref{Der Satz von Hadamard}}
+	\begin{satz}[Hadamard]
+		\input{thms/hadamard.tex}
+	\end{satz}
+\end{frame}
+
+\begin{frame}{Pfadhebungen und lokale Homöomorphismen}
+	% Wir wollen aus einem lokalen Diffeomorphismus einen globalen Diffeomorphismus machen.
+	\begin{Satz}
+		\pause
+		\input{thms/coveringmaptohomeo.tex}
+	\end{Satz}
+	\pause
+	\begin{remark}
+		\pause
+		$\pi$ kann zum Beispiel eine Überlagerungsabbildung sein.
+	\end{remark}
+\end{frame}
+
+\begin{frame}{Quellen}
+	\begin{enumerate}
+		\item \emph{Riemannian Geometry}. Manfredo do Carmo. Birkhäuser. 1992.
+		\item \emph{Differential Geometry of Curves and Surfaces}. Manfredo do Carmo. Prentice-Hall, Inc. 1976.
+	\end{enumerate}
+\end{frame}
+
+\end{document}
