@@ -4,32 +4,40 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
-\usetheme[numbering=none]{focus}
+%\usetheme[numbering=none]{focus}
+\usetheme{Madrid}
 \usepackage{nameref}
 \usepackage{csquotes}
 \usepackage{mathtools}
 \usepackage{verbatim}
 
-\title{Der Satz von Hadamard}
+\title{Der Hauptsatz der Differential- und Integralrechnung für absolut stetige Funktionen}
 %\subtitle{Seminar Klassische Sätze der Differentialgeometrie (WS 21/22)}
 \author{Lukas Norkowski}
-\date{16. Dezember 2021} 
+\date{30. Mai 2022} 
 
 \input{mathcommands.tex}
 
 \hyphenation{Ex-po-nen-tial-ab-bil-dung}
-\hyphenation{Über-la-ge-run-gen}
 
-\usefonttheme[onlymath]{serif}
+%\usefonttheme[onlymath]{serif}
 \renewcommand<>{\emph}[1]{{\only#2{\em}#1}}
 \theoremstyle{definition}
 \newtheorem*{theorem*}{Theorem}
-\newtheorem{satz}[theorem]{Theorem}
+\newtheorem{satz}[theorem]{Satz}
+\newtheorem{hsatz}[theorem]{Hilfssatz}
 \newtheorem*{remark}{\translate{Remark}}
 \newtheorem*{reminder}{\translate{Reminder}}
 \newtheorem{cor}[theorem]{Corollary}
 \newtheorem*{cor*}{Corollary}
 \newtheorem{proposition}[theorem]{\translate{Proposition}}
+
+
+\newtheorem{memo}{Memo}
+\newenvironment<>{memo}{
+  \setbeamercolor{block title alerted}{fg=black, bg=yellow}
+  \setbeamercolor{block body alerted}{bg=yellow!25}
+  \begin{alertblock}{Memo}}{\end{alertblock}}
 
 \begin{document}
 
@@ -45,11 +53,11 @@
 \section{Einleitung und Motivation}
 \label{Einleitung und Motivation}
 
-\begin{frame}{Das Ziel}
-	\begin{satz}[Hadamard]
+\begin{frame}{Bereits bekannt}
+	\begin{theorem*}[Fundamentalsatz für stetig differentierbare Funktionen]
 		\pause
-		\input{thms/hadamard.tex}
-	\end{satz}
+		\input{thms/fundamental-theorem-continuous.tex}
+	\end{theorem*}
 \end{frame}
 
 \begin{frame}{\enquote{Gegenbeispiele}}
@@ -61,128 +69,94 @@
 \end{frame}
 
 
-\section{Konjugierte Punkte und die Exponentialabbildung}
-\label{Konjugierte Punkte und die Exponentialabbildung}
+\section{Das Lebesguemaß}
+\label{Das Lebesguemaß}
 
-\begin{frame}{Konjugierte Punkte}
+\begin{frame}{Das Lebesguemaß}
+	Es sei $(\RR^d, \mathcal{B}_d, \mu_d)$ der Borel-Maßraum und die Menge aller Teilmengen von $\mu_d$-Nullmengen
+	\begin{equation*}
+		\mathcal{N}_d\coloneqq \{N\subseteq\RR^d\colon \text{Es existiert } M\in\mathcal{B}_d \text{ mit } N\subseteq M \text{ und }\mu_d(M)=0\}.
+	\end{equation*}
 	\begin{definition}
-		\pause
-		\input{thms/conjugatepointsdef.tex}
+	\begin{itemize}
+		\item Die Menge $\mathcal{L}_d \coloneqq \{B\cup N\colon B\in\mathcal{B}_d, N\in\mathcal{N}_d\}$ wird \term{Lebesguesche} $\sigma$-Algebra genannt.
+		\item Die Abbildung $\lambda_d\colon\mathcal{L}_d\to[0, \infty]$, definiert durch $\lambda_d(L)\coloneqq\mu_d(B)$ für $L=B\cup N\in\mathcal{L}_d$, $B\in\mathcal{B}_d, N\in\mathcal{N}_d$, wird \term{Lebesguemaß} genannt.
+	\end{itemize}
 	\end{definition}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Konjugierte Punkte und die Exponential-\\abbildung}
-	\begin{Lemma}
-		\pause
-		\input{thms/criticalpointslemma.tex}
-	\end{Lemma}
-	%\begin{remark}
-	%	Ein Jacobifeld $J$ entlang einer Geodätischen $\gamma\colon[0,l]\to M$ mit %$J(0)=0$ genügt der Formel
-	%	\begin{equation*}
-	%		J(t)= \d (\exp_{\gamma(0)})_{t\gamma'(0)}(tJ'(0)),\quad t\in[0,l].
-	%	\end{equation*}
-	%\end{remark}
-\end{frame}
+\begin{frame}{Es geht mit rechten Dingen zu.}
 
-\begin{frame}{Konjugierte Punkte und nicht-positive Schnittkrümmung}
-	\begin{Satz}
-		\pause
-		\input{thms/localdiffeolemma.tex}
-	\end{Satz}
+\begin{memo}
+	$\mathcal{L}_d \coloneqq \{B\cup N\colon B\in\mathcal{B}_d, N\in\mathcal{N}_d\}$,\\
+	$\lambda_d\colon\mathcal{L}_d\to[0, \infty]$, $\lambda_d(L)=\mu_d(B)$ für $L=B\cup N\in\mathcal{L}_d$
+\end{memo}
+\begin{satz}
+\begin{enumerate}
+	\item Die Menge $\mathcal{L}_d$ ist eine $\sigma$-Algebra.
+	\item Die Abbildung $\lambda_d$ ist wohldefiniert und ein Maß auf $(\RR^d, \mathcal{L}_d)$.
+	\item $(\RR^d, \mathcal{L}_d, \lambda_d)$ ist \term{vollständig}, d.h. jede Teilmenge einer $\lambda_d$-Nullmenge ist wieder eine $\lambda_d$-Nullmenge und damit insbesondere messbar.
+\end{enumerate}
+\end{satz}
+\begin{satz}
+	Eine Menge $M\subseteq \RR^d$ ist genau dann in $\mathcal{L}_d$ enthalten, wenn für jedes $\varepsilon>0$ eine offene Menge $O\subseteq\RR^d$ und eine abgeschlossene Menge $A\subseteq\RR^d$ mit $A\subseteq M\subseteq O$ und $\lambda_d(O\setminus A)<\varepsilon$ existieren.
+\end{satz}
 \end{frame}
 
 
-\section{Überlagerungstheorie}
-\label{ueberlagerungstheorie}
+\section{Absolut stetige Funktionen}
+\label{Absolut stetige Funktionen}
 
-\begin{frame}{Wiederholung und Neues}
-	Im Folgenden sind $B$ und $\widetilde{B}$ nicht-leere topologische Räume.
-	\begin{definition}[Überlagerung]
-		\pause
-		\input{thms/defcovering.tex}
+\begin{frame}{Wiederholung}
+	Es sei $(X, \mathcal{A})$ ein Messraum und $\lambda$ und $\mu$ zwei Maße auf $(X,\mathcal{A})$.
+	\begin{definition}
+		$\lambda$ ist absolut stetig bezüglich $\mu$ ($\lambda\ll\mu$), falls gilt:
+		\begin{equation*}
+			\forall A\in\mathcal{A}\colon\:\mu(A)=0 \implies \lambda(A)=0.
+		\end{equation*}
 	\end{definition}
-	\pause
-	\begin{definition}[Pfadhebungseigenschaft]
-		\pause
-		\input{thms/deflifting.tex}
- 	\end{definition}
+	\begin{hsatz}
+		Sind $(X,\mathcal{A})$, $\lambda$ und $\mu$ wie oben und zusätzlich $\lambda$ \emph{endlich} (oder komplex), so gilt:
+		\begin{equation*}
+			\lambda\ll\mu \Longleftrightarrow \forall\varepsilon>0\:\exists\delta>0\:\forall A\in\mathcal{A}\colon \mu(A)<\delta \Rightarrow \abs{\lambda}(A)<\varepsilon.
+		\end{equation*}
+	\end{hsatz}
 \end{frame}
 
-\begin{frame}{Überlagerungen heben Pfade}
-	\begin{Satz}
-		\pause
-		\input{thms/coveringsliftpaths.tex}
-	\end{Satz}
+\begin{frame}{Motivation}
+	Ist $f'\in L^1[a,b]$, so definiert $\d \lambda =f' \d\mu$ ein Maß $\lambda$ auf $[a,b]$. $\lambda$ endlich bzw. komplex und daher stark absolut stetig nach vorigem Satz. Also gibt es zu jedem $\varepsilon>0$ ein $\delta>0$, sodass für jedes $n\in\NN$ und für alle disjunkten Teilintervalle $(a_1,b_1),\dots,(a_n,b_n)$ von $[a,b]$ gilt:
+	\begin{equation*}
+		\sum_{i=1}^n b_i-a_i <\delta \implies \sum_{i=1}^n \abs{\int_{a_i}^{b_i} f'(t)\d t }<\varepsilon.
+	\end{equation*}
+	\begin{definition}
+		\input{thms/absolute-continuity-functions.tex}
+	\end{definition}
 \end{frame}
 
-\begin{frame}{Pfadhebungen und lokale Homöomorphismen}
-	% Wir wollen aus einem lokalen Diffeomorphismus einen globalen Diffeomorphismus machen.
-	\begin{Satz}
-		\pause
-		\input{thms/coveringmaptohomeo.tex}
-	\end{Satz}
-	\pause
+\begin{frame}{Bemerkungen}
 	\begin{remark}
-		\pause
-		$\pi$ kann zum Beispiel eine Überlagerungsabbildung sein.
+	\begin{itemize}
+		\item Jede absolut stetige Funktion ist insbesondere stetig ($n=1$).
+		\item 
+	\end{itemize}
 	\end{remark}
+	
 \end{frame}
 
-
-\begin{frame}{\nameref{ueberlagerungstheorie}}
-	% Für den folgenden Satz benötigen wir eine Aussage über lokale Homöomorphismen mit der Pfadhochhebungseigenschaft.
-	\begin{Satz}
-		\pause
-		\input{thms/liftingarcstocoveringprop.tex}
-	\end{Satz}
-	\pause
-	\begin{remark}
-		\pause
-		Jede Mannigfaltigkeit ist sowohl lokal wegzusammenhängend als auch lokal einfach zusammenhängend.
-	\end{remark}
-\end{frame}
-
-\begin{frame}{Lokale Diffeomorphismen werden zu Überlagerungen}
-	\begin{Satz}
-		\pause
-		\input{thms/coveringlemma.tex}
-	\end{Satz}
-	%\pause
-	%\begin{corollary}
-	%	Ist $M$ eine vollständige Riemannsche Mannigfaltigkeit \pause mit %nicht-positiver Schnittkrümmung, \pause $p\in M$, \pause dann ist %$\exp_p\colon T_pM\to M$ eine Überlagerung \pause (mit einer geeigneten %Metrik auf $T_p M$).
-	%\end{corollary}
-\end{frame}
-
-
-% Hier sollte alles nur noch kurz eingeblendet werden.
-\section{Der Satz von Hadamard}
-\label{Der Satz von Hadamard}
-
-\renewcommand{\pause}{}
-\begin{frame}{\nameref{Der Satz von Hadamard}}
-	\begin{satz}[Hadamard]
-		\input{thms/hadamard.tex}
+\begin{frame}{Charakterisierung von absoluter Stetigkeit}
+	\begin{satz}
+		\input{thms/characterization-ac.tex}
 	\end{satz}
+	\begin{alertblock}{Bemerkung}
+		Die Cantorfunction bildet eine Nullmenge auf eine Menge mit Maß $1$ ab.
+	\end{alertblock}
 \end{frame}
 
-\begin{frame}{Pfadhebungen und lokale Homöomorphismen}
-	% Wir wollen aus einem lokalen Diffeomorphismus einen globalen Diffeomorphismus machen.
-	\begin{Satz}
-		\pause
-		\input{thms/coveringmaptohomeo.tex}
-	\end{Satz}
-	\pause
-	\begin{remark}
-		\pause
-		$\pi$ kann zum Beispiel eine Überlagerungsabbildung sein.
-	\end{remark}
-\end{frame}
 
 \begin{frame}{Quellen}
 	\begin{enumerate}
-		\item \emph{Riemannian Geometry}. Manfredo do Carmo. Birkhäuser. 1992.
-		\item \emph{Differential Geometry of Curves and Surfaces}. Manfredo do Carmo. Prentice-Hall, Inc. 1976.
+		\item \emph{Real And Complex Analysis}. Walter Rudin. Third Edition. McGraw-Hill International Editions. 1987.
+		\item \emph{Analysis 3}. Michael Plum. Jonathan Wunderlich. \emph{3. Übungsblatt}. WS 18/19.
 	\end{enumerate}
 \end{frame}
 

@@ -1,4 +1,4 @@
-\documentclass[a4paper, ngerman]{scrartcl}
+\documentclass[a4paper, ngerman]{article}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
 \usepackage{layout}    %  um die Seitenränder als Bild auszugeben
@@ -9,11 +9,13 @@
 \usepackage{amssymb}
 \usepackage{booktabs}
 \usepackage{mathtools}
+\usepackage{titling}
 
-\title{Der Satz von Hadamard}
-\subtitle{Seminar Klassische Sätze der Differentialgeometrie (WS 21/22)}
+\pretitle{\begin{center}\LARGE}
+\title{Der Hauptsatz der Differential- und Integralrechnung für absolut stetige Funktionen}
+\posttitle{\Large \vskip 0.5em Seminar Maßtheorie (SS 22) \par\end{center}}
 \author{Lukas Norkowski}
-\date{16. Dezember 2021}
+\date{30. Mai 2022}
 
 \input{mathcommands.tex}
 
@@ -46,50 +48,21 @@
 	\maketitle
 	\thispagestyle{empty}	
 
-\begin{theorem}[Hadamard]
-	\input{thms/hadamard}
+\begin{theorem}[Fundamentalsatz für stetig differentierbare Funktionen]
+	\input{thms/fundamental-theorem-continuous.tex}
 \end{theorem}
 
-\subsection*{Konjugierte Punkte und die Exponentialabbildung}
-
 \begin{definition}
-	\input{thms/conjugatepointsdef.tex}
+	\input{thms/absolute-continuity-functions.tex}
 \end{definition}
 
-\begin{lemma}
-	\input{thms/criticalpointslemma.tex}
-\end{lemma}
-
 \begin{satz}
-	\input{thms/localdiffeolemma.tex}
-\end{satz}
-
-\subsection*{Überlagerungstheorie}
-
-\begin{definition}
-	\input{thms/deflifting.tex}
-\end{definition}
-
-\begin{hsatz}
-	\input{thms/liftingarcstocoveringprop.tex}
-\end{hsatz}
-
-\begin{hsatz}
-	\input{thms/coveringsliftpaths.tex}
-\end{hsatz}
-
-\begin{hsatz}
-	\input{thms/coveringmaptohomeo.tex}
-\end{hsatz}
-
-\begin{satz}
-	\input{thms/coveringlemma.tex}
+  \input{thms/characterization-ac.tex}
 \end{satz}
 
 \subsection*{Literatur}
 \begin{enumerate}
-	\item \emph{Riemannian Geometry}. Manfredo do Carmo. Birkhäuser. 1992.
-	\item \emph{Differential Geometry of Curves and Surfaces}. Manfredo do Carmo. Prentice-Hall, Inc. 1976.
+	\item \emph{Real And Complex Analysis}. Walter Rudin. Third Edition. McGraw-Hill International Editions. 1987.
 \end{enumerate}
 
 
