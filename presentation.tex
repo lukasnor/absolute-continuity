@@ -4,8 +4,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
-%\usetheme[numbering=none]{focus}
-\usetheme{Madrid}
+\usetheme[numbering=none,nofirafonts]{focus}
+\usepackage{newpxtext,newpxmath}
+%\usetheme{Madrid}
 \usepackage{nameref}
 \usepackage{csquotes}
 \usepackage{mathtools}
@@ -21,6 +22,7 @@
 \hyphenation{Ex-po-nen-tial-ab-bil-dung}
 
 %\usefonttheme[onlymath]{serif}
+\usefonttheme{serif}
 \renewcommand<>{\emph}[1]{{\only#2{\em}#1}}
 \theoremstyle{definition}
 \newtheorem*{theorem*}{Theorem}
@@ -60,17 +62,21 @@
 	\end{theorem*}
 \end{frame}
 
+\begin{frame}{Fragen}
+	\begin{enumerate}
+		\item Foo
+	\end{enumerate}
+\end{frame}
+
 \begin{frame}{\enquote{Gegenbeispiele}}
 	
 \end{frame}
 
-\begin{frame}{Noch einmal die Gliederung}
-	\tableofcontents
-\end{frame}
 
 
 \section{Das Lebesguemaß}
 \label{Das Lebesguemaß}
+
 
 \begin{frame}{Das Lebesguemaß}
 	Es sei $(\RR^d, \mathcal{B}_d, \mu_d)$ der Borel-Maßraum und die Menge aller Teilmengen von $\mu_d$-Nullmengen
@@ -107,7 +113,7 @@
 \section{Absolut stetige Funktionen}
 \label{Absolut stetige Funktionen}
 
-\begin{frame}{Wiederholung}
+\begin{frame}{Absolute Stetigkeit von Maßen}
 	Es sei $(X, \mathcal{A})$ ein Messraum und $\lambda$ und $\mu$ zwei Maße auf $(X,\mathcal{A})$.
 	\begin{definition}
 		$\lambda$ ist absolut stetig bezüglich $\mu$ ($\lambda\ll\mu$), falls gilt:
@@ -148,10 +154,39 @@
 		\input{thms/characterization-ac.tex}
 	\end{satz}
 	\begin{alertblock}{Bemerkung}
-		Die Cantorfunction bildet eine Nullmenge auf eine Menge mit Maß $1$ ab.
+		Die Cantorfunktion bildet eine Nullmenge auf eine Menge mit Maß $1$ ab!
 	\end{alertblock}
 \end{frame}
 
+\section{Der Hauptsatz}
+\label{Der Hauptsatz}
+
+\begin{frame}{Der Hauptsatz}
+	\begin{theorem*}
+		\input{thms/fundamental-theorem-ac.tex}		
+	\end{theorem*}
+\end{frame}
+
+\begin{frame}{Totalvariation}
+	\begin{definition}
+		\input{thms/total-variation.tex}
+	\end{definition}
+	\begin{remark}
+		Ist $f\colon[a,b]\to\RR$ ein stetiger Weg. Dann hat $f$ genau dann endliche Länge $L$, wenn $f$ von beschränkter Variation ist.
+	\end{remark}
+\end{frame}
+
+\begin{frame}{Satz über Totalvariation}
+	\begin{satz}
+		\input{thms/total-variation-is-ac.tex}
+	\end{satz}
+\end{frame}
+
+\begin{frame}{Fundamentalsatz für absolut stetige Funktionen}
+	\begin{theorem}
+		\input{thms/fundamental-theorem-ac.tex}
+	\end{theorem}
+\end{frame}
 
 \begin{frame}{Quellen}
 	\begin{enumerate}
