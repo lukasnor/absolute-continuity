@@ -1,5 +1,5 @@
 \documentclass[ngerman
-			,handout
+			%,handout
 			]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -49,7 +49,7 @@
 \end{frame}	
 
 \begin{frame}{Gliederung}
-\tableofcontents
+	\tableofcontents
 \end{frame}
 
 % Section Einleitung
@@ -68,7 +68,6 @@
 
 \begin{frame}{Gegenbeispiele}
 	\begin{enumerate}
-		\pause
 		\item Sei $f:[0,1]\to[0,1]$ die Cantorfunktion, also der punktweise Grenzwert der Folge $(f_n)_{n\in\NN_0}$ mit
 		\begin{equation*}
 			f_0(x)\coloneqq x, x\in[0,1]\quad \text{ und}\quad f_{n+1}(x)\coloneqq
@@ -92,19 +91,19 @@
 
 \begin{frame}{Gegenbeispiele}
 \begin{enumerate}
-	\item $f\colon[0,1]\to[0,1]$ Cantorfunktion\dots\pause
+	\item Sei $f\colon[0,1]\to[0,1]$ Cantorfunktion\dots\pause
 	\item Sei $g:[0,1]\to\RR$ definiert durch
 	\begin{equation*}
 		g(x)\coloneqq
 		\begin{cases}
-			x^2 \sin(\frac{1}{x^2}), &x\in(0,1],\\
+			x^2 \sin\left(\frac{1}{x^2}\right), &x\in(0,1],\\
 			0, &x=0.
 		\end{cases}
 	\end{equation*}
 	Dann ist $g$ auf $[0,1]$ differenzierbar mit Ableitung
 	\begin{equation*}
 		g'(x)=\begin{cases}
-			2x\sin(\frac{1}{x^2})-\frac{2}{x}\cos(\frac{1}{x^2}), &x\in(0,1],\\
+			2x\sin\left(\frac{1}{x^2}\right)-\frac{2}{x}\cos\left(\frac{1}{x^2}\right), &x\in(0,1],\\
 			0, &x=0.
 		\end{cases}
 	\end{equation*}
@@ -117,12 +116,12 @@
 
 \begin{frame}{Gegenbeispiele}
 \begin{enumerate}
-	\item $f\colon[0,1]\to[0,1]$ Cantorfunktion\dots \pause
+	\item Sei $f\colon[0,1]\to[0,1]$ Cantorfunktion\dots \pause
 	\item Sei $g:[0,1]\to\RR$ definiert durch
 	\begin{equation*}
 		g(x)\coloneqq
 		\begin{cases}
-			x^2 \sin(\frac{1}{x^2}), &x\in(0,1],\\
+			x^2 \sin\left(\frac{1}{x^2}\right), &x\in(0,1],\\
 			0, &x=0.
 		\end{cases}
 	\end{equation*}
@@ -188,13 +187,31 @@
 \end{frame}
 
 \begin{frame}{Motivation}
-	Ist $f'\in L^1[a,b]$, so definiert $\d \lambda =f' \d\mu$ ein Maß $\lambda$ auf $[a,b]$. $\lambda$ endlich bzw. komplex und daher stark absolut stetig nach vorigem Satz. Also gibt es zu jedem $\varepsilon>0$ ein $\delta>0$, sodass für jedes $n\in\NN$ und für alle disjunkten Teilintervalle $(a_1,b_1),\dots,(a_n,b_n)$ von $[a,b]$ gilt:
+	Ist $f'\in L^1([a,b],m)$, so definiert $\d \lambda =f' \d m$ ein Maß $\lambda$ auf $[a,b]$. $\lambda$ ist endlich bzw. komplex und daher stark absolut stetig bzgl. $m$ nach vorigem Satz. Also gibt es zu jedem $\varepsilon>0$ ein $\delta>0$, sodass für jedes $n\in\NN$ und für alle disjunkten Teilintervalle $(a_1,b_1),\dots,(a_n,b_n)$ von $[a,b]$ gilt:
+	\begin{equation}
+		\label{eq:foo}
+		\sum_{i=1}^n b_i-a_i <\delta \implies \sum_{i=1}^n \abs{\int_{a_i}^{b_i} f'(t)\d t }<\varepsilon.\tag{$\ast$}
+	\end{equation}
+	Definiere $f\colon[a,b]\to\RR$ als 
 	\begin{equation*}
-		\sum_{i=1}^n b_i-a_i <\delta \implies \sum_{i=1}^n \abs{\int_{a_i}^{b_i} f'(t)\d t }<\varepsilon.
+		f(x)\coloneqq\int_a^x f'(t)\d t, \quad x\in [a,b].
 	\end{equation*}
+	Dann gilt mit \eqref{eq:foo}
+	\begin{equation*}
+		\sum_{i=1}^n\abs{f(b_i)-f(a_i)}<\varepsilon.
+	\end{equation*}
+\end{frame}
+
+\begin{frame}{Absolut stetige Funktionen}
 	\begin{definition}
 		\input{thms/absolute-continuity-functions.tex}
 	\end{definition}
+	\begin{remark}
+		\begin{enumerate}
+			\item Absolut stetige Funktionen sind stetig. ($N=1$).
+   			\item Lipschitz-stetige Funktionen sind absolut stetig. ($\delta=\frac{\varepsilon}{L}$).
+		\end{enumerate}
+	\end{remark}
 \end{frame}
 
 \begin{frame}{Charakterisierung von absoluter Stetigkeit}
@@ -204,6 +221,15 @@
 	\begin{alertblock}{Bemerkung}
 		Die Cantorfunktion bildet eine Nullmenge auf eine Menge mit Maß $1$ ab!
 	\end{alertblock}
+\end{frame}
+
+\begin{frame}{Erinnerung - Lebesguesche Differentiation}
+	\begin{definition}
+		\input{thms/nicely-shrinking.tex}
+	\end{definition}
+	\begin{theorem*}
+		\input{thms/lebesgue-differentiation.tex}
+	\end{theorem*}
 \end{frame}
 
 
@@ -230,24 +256,8 @@
 \end{frame}
 
 \begin{frame}{Hauptsatz für absolut stetige Funktionen}
-	\begin{theorem}
-		\input{thms/fundamental-theorem-ac.tex}
-	\end{theorem}
-\end{frame}
-
-\begin{frame}{Erinnerung - Lebesguesche Differentiation}
-	\begin{definition}
-		Sei $x\in\RR^d$. Eine Folge $(E_i)_{i\in\NN}$ von Borelmengen in $\RR^d$ \term{schrumpft schön} gegen $x$, falls ein $\alpha>0$ und eine Folge von Bällen $(B_x(r_i))_{i\in\NN}$ mit $\lim_{i\to\infty}r_i=0$ existieren, sodass
-		\begin{equation*}
-			E_i \subseteq B_x(r_i)\quad \text{und}\quad \abs{E_i}\geq \alpha\cdot\abs{B_x(r_i)} \:\forall\,i\in\NN.
-		\end{equation*}
-	\end{definition}
 	\begin{theorem*}
-		Sei $f\in L^1(\RR^d)$. Dann gilt
-		\begin{equation*}
-			f(x)=\lim_{i\to\infty} \frac{1}{\abs{E_i(x)}} \int_{E_i} f(t)\d t
-		\end{equation*}
-		für fast alle $x\in\RR^d$ und schön gegen $x$ schrumpfende Folgen $(E_i(x))_{i\in\NN}$.
+		\input{thms/fundamental-theorem-ac.tex}
 	\end{theorem*}
 \end{frame}
 
