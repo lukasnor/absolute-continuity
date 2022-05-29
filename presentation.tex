@@ -61,53 +61,60 @@
 		\pause
 		\input{thms/fundamental-theorem-continuous.tex}
 	\end{theorem*}
+	\pause
 	\begin{block}{Frage}
+		\pause
    		Reicht es, dass $f$ fast überall differenzierbar mit $f'\in L^1[a,b]$ ist? \pause {\color{red} Nein!}
 	\end{block}
 \end{frame}
 
 \begin{frame}{Gegenbeispiele}
 	\begin{enumerate}
-		\item Sei $f:[0,1]\to[0,1]$ die Cantorfunktion, also der punktweise Grenzwert der Folge $(f_n)_{n\in\NN_0}$ mit
+		\item Sei $f:[0,1]\to[0,1]$ die Cantorfunktion, \pause  also der punktweise Grenzwert der Folge $(f_n)_{n\in\NN_0}$ mit
 		\begin{equation*}
-			f_0(x)\coloneqq x, x\in[0,1]\quad \text{ und}\quad f_{n+1}(x)\coloneqq
+			f_0(x)\coloneqq x, x\in[0,1]\quad\pause \text{ und}\quad f_{n+1}(x)\coloneqq
 			\begin{cases}
-				\frac{1}{2}f_n(3x),&0\leq x\leq \frac{1}{3},\\
-				\frac{1}{2}, & \frac{1}{3}\leq x\leq \frac{2}{3},\\
-				\frac{1}{2}f_n(3x-2), &\frac{2}{3}\leq x \leq 1.
+				\pause\frac{1}{2}f_n(3x),&0\leq x\leq \frac{1}{3},\\
+				\pause\frac{1}{2}, & \frac{1}{3}\leq x\leq \frac{2}{3},\\
+				\pause\frac{1}{2}f_n(3x-2), &\frac{2}{3}\leq x \leq 1.
 			\end{cases}
 		\end{equation*}
-		$f$ ist stetig, da $(f_n)$ gleichmäßig gegen $f$ konvergiert, denn es gilt
+		\pause
+		$f$ ist stetig, da $(f_n)$ gleichmäßig gegen $f$ konvergiert, \pause denn es gilt
 		\begin{equation*}
 			\norm{f_{n+1}-f_n}_\infty \leq \frac{1}{2}\norm{f_n-f_{n-1}}_\infty \quad \forall\, n\in\NN.
 		\end{equation*}
-		Sei $C$ die Cantormenge, also
+		\pause
+		Sei $C$ die Cantormenge:\pause
 		\begin{equation*}
 			C\coloneqq \bigcap_{n=0}^\infty A_n,\quad A_0=[0,1],\quad A_{n+1}=\frac{1}{3}(A_n\cup (2+A_n)).
 		\end{equation*}
+		\pause
 		Dann ist $f$ auf $[0,1]\setminus C$ differenzierbar mit Ableitung 0. 
 	\end{enumerate}
 \end{frame}
 
 \begin{frame}{Gegenbeispiele}
 \begin{enumerate}
-	\item Sei $f\colon[0,1]\to[0,1]$ Cantorfunktion\dots\pause
+	\item Sei $f\colon[0,1]\to[0,1]$ Cantorfunktion\dots
 	\item Sei $g:[0,1]\to\RR$ definiert durch
 	\begin{equation*}
 		g(x)\coloneqq
 		\begin{cases}
-			x^2 \sin\left(\frac{1}{x^2}\right), &x\in(0,1],\\
-			0, &x=0.
+			\pause x^2 \sin\left(\frac{1}{x^2}\right), &x\in(0,1],\\
+			\pause 0, &x=0.
 		\end{cases}
 	\end{equation*}
-	Dann ist $g$ auf $[0,1]$ differenzierbar mit Ableitung
+	\pause
+	Dann ist $g$ auf $[0,1]$ differenzierbar \pause mit Ableitung
 	\begin{equation*}
 		g'(x)=\begin{cases}
-			2x\sin\left(\frac{1}{x^2}\right)-\frac{2}{x}\cos\left(\frac{1}{x^2}\right), &x\in(0,1],\\
-			0, &x=0.
+			\pause 2x\sin\left(\frac{1}{x^2}\right)-\frac{2}{x}\cos\left(\frac{1}{x^2}\right), &x\in(0,1],\\
+			\pause 0, &x=0.
 		\end{cases}
 	\end{equation*}
-	Damit ist $g'$ nicht stetig auf $[0,1]$ und nicht integrierbar:
+	\pause
+	Damit ist $g'$ nicht stetig auf $[0,1]$ und nicht integrierbar:\pause
 	\begin{equation*}
 		\int_0^1 \abs{g'(x)}\d x =\infty.
 	\end{equation*}
@@ -116,18 +123,20 @@
 
 \begin{frame}{Gegenbeispiele}
 \begin{enumerate}
-	\item Sei $f\colon[0,1]\to[0,1]$ Cantorfunktion\dots \pause
+	\item Sei $f\colon[0,1]\to[0,1]$ Cantorfunktion\dots
 	\item Sei $g:[0,1]\to\RR$ definiert durch
 	\begin{equation*}
 		g(x)\coloneqq
 		\begin{cases}
 			x^2 \sin\left(\frac{1}{x^2}\right), &x\in(0,1],\\
-			0, &x=0.
+			0, &x=0\dots
 		\end{cases}
 	\end{equation*}
 \end{enumerate}
 \begin{remark}
-	Für einen verallgemeinerten Hauptsatz brauchen wir mindestens eine integrierbare Ableitung fast überall und zusätzliche Regularität.\end{remark}
+	\pause
+	Für einen verallgemeinerten Hauptsatz brauchen wir mindestens eine integrierbare Ableitung fast überall \pause und zusätzliche Regularität.
+\end{remark}
 \end{frame}
 
 % Section Lebesguemaß
@@ -135,34 +144,41 @@
 \label{Das Lebesguemaß}
 
 \begin{frame}{Das Lebesguemaß}
-	Es sei $(\RR^d, \mathcal{B}_d, \mu_d)$ der Borel-Maßraum und die Menge aller Teilmengen von $\mu_d$-Nullmengen
+	Es sei $(\RR^d, \mathcal{B}_d, \mu_d)$ der Borel-Maßraum und $\mathcal{N}_d$ die Menge aller Teilmengen von $\mu_d$-Nullmengen \pause
 	\begin{equation*}
 		\mathcal{N}_d\coloneqq \{N\subseteq\RR^d\colon \text{Es existiert } M\in\mathcal{B}_d \text{ mit } N\subseteq M \text{ und }\mu_d(M)=0\}.
 	\end{equation*}
+	\pause
 	\begin{definition}
 	\begin{itemize}
+		\pause
 		\item Die Menge $\mathcal{L}_d \coloneqq \{B\cup N\colon B\in\mathcal{B}_d, N\in\mathcal{N}_d\}$ wird \term{Lebesguesche} $\sigma$-Algebra genannt.
+		\pause
 		\item Die Abbildung $\lambda_d\colon\mathcal{L}_d\to[0, \infty]$, definiert durch $\lambda_d(L)\coloneqq\mu_d(B)$ für $L=B\cup N\in\mathcal{L}_d$, $B\in\mathcal{B}_d, N\in\mathcal{N}_d$, wird \term{Lebesguemaß} genannt.
 	\end{itemize}
 	\end{definition}
 \end{frame}
 
 \begin{frame}{Es geht mit rechten Dingen zu.}
-
-\begin{memo}
-	$\mathcal{L}_d \coloneqq \{B\cup N\colon B\in\mathcal{B}_d, N\in\mathcal{N}_d\}$,\\
-	$\lambda_d\colon\mathcal{L}_d\to[0, \infty]$, $\lambda_d(L)=\mu_d(B)$ für $L=B\cup N\in\mathcal{L}_d$
-\end{memo}
-\begin{satz}
-\begin{enumerate}
-	\item Die Menge $\mathcal{L}_d$ ist eine $\sigma$-Algebra.
-	\item Die Abbildung $\lambda_d$ ist wohldefiniert und ein Maß auf $(\RR^d, \mathcal{L}_d)$.
-	\item $(\RR^d, \mathcal{L}_d, \lambda_d)$ ist \term{vollständig}, d.h. jede Teilmenge einer $\lambda_d$-Nullmenge ist wieder eine $\lambda_d$-Nullmenge und damit insbesondere messbar.
-\end{enumerate}
-\end{satz}
-\begin{satz}
-	Eine Menge $M\subseteq \RR^d$ ist genau dann in $\mathcal{L}_d$ enthalten, wenn für jedes $\varepsilon>0$ eine offene Menge $O\subseteq\RR^d$ und eine abgeschlossene Menge $A\subseteq\RR^d$ mit $A\subseteq M\subseteq O$ und $\lambda_d(O\setminus A)<\varepsilon$ existieren.
-\end{satz}
+	\begin{memo}
+		$\mathcal{L}_d \coloneqq \{B\cup N\colon B\in\mathcal{B}_d, N\in\mathcal{N}_d\}$,\\
+		$\lambda_d\colon\mathcal{L}_d\to[0, \infty]$, $\lambda_d(L)=\mu_d(B)$ für $L=B\cup N\in\mathcal{L}_d$
+	\end{memo}
+	\begin{satz}
+		\begin{enumerate}
+			\pause
+			\item Die Menge $\mathcal{L}_d$ ist eine $\sigma$-Algebra.
+			\pause
+			\item Die Abbildung $\lambda_d$ ist wohldefiniert und ein Maß auf $(\RR^d, \mathcal{L}_d)$.
+			\pause
+			\item $(\RR^d, \mathcal{L}_d, \lambda_d)$ ist \term{vollständig}, \pause d.h. jede Teilmenge einer $\lambda_d$-Nullmenge ist wieder eine $\lambda_d$-Nullmenge und damit insbesondere messbar.
+		\end{enumerate}
+	\end{satz}
+	\pause
+	\begin{satz}
+		\pause
+		Eine Menge $M\subseteq \RR^d$ ist genau dann in $\mathcal{L}_d$ enthalten, \pause wenn für jedes $\varepsilon>0$ eine offene Menge $O\subseteq\RR^d$ \pause und eine abgeschlossene Menge $A\subseteq\RR^d$ \pause mit $A\subseteq M\subseteq O$ \pause und $\lambda_d(O\setminus A)<\varepsilon$ existieren.
+	\end{satz}
 \end{frame}
 
 
@@ -172,57 +188,70 @@
 
 \begin{frame}{Absolute Stetigkeit von Maßen}
 	Es sei $(X, \mathcal{A})$ ein Messraum und $\lambda$ und $\mu$ zwei Maße auf $(X,\mathcal{A})$.
+	\pause
 	\begin{definition}
 		$\lambda$ ist absolut stetig bezüglich $\mu$ ($\lambda\ll\mu$), falls gilt:
 		\begin{equation*}
 			\forall A\in\mathcal{A}\colon\:\mu(A)=0 \implies \lambda(A)=0.
 		\end{equation*}
 	\end{definition}
+	\pause
 	\begin{hsatz}[Starke absolute Stetigkeit]
-		Sind $(X,\mathcal{A})$, $\lambda$ und $\mu$ wie oben und zusätzlich $\lambda$ \emph{endlich} (oder komplex), so gilt:
+		Seien $(X,\mathcal{A})$, $\lambda$ und $\mu$ wie oben \pause und zusätzlich sei $\lambda$ \emph{endlich (oder komplex)}, so gilt \pause
 		\begin{equation*}
-			\lambda\ll\mu \Longleftrightarrow \forall\varepsilon>0\:\exists\delta>0\:\forall A\in\mathcal{A}\colon \mu(A)<\delta \Rightarrow \abs{\lambda}(A)<\varepsilon.
+			\lambda\ll\mu \Longleftrightarrow \pause \forall\varepsilon>0\:\exists\delta>0\:\forall A\in\mathcal{A}\colon \mu(A)<\delta \Rightarrow \abs{\lambda}(A)<\varepsilon.
 		\end{equation*}
 	\end{hsatz}
 \end{frame}
 
 \begin{frame}{Motivation}
-	Ist $f'\in L^1([a,b],m)$, so definiert $\d \lambda =f' \d m$ ein Maß $\lambda$ auf $[a,b]$. $\lambda$ ist endlich bzw. komplex und daher stark absolut stetig bzgl. $m$ nach vorigem Satz. Also gibt es zu jedem $\varepsilon>0$ ein $\delta>0$, sodass für jedes $n\in\NN$ und für alle disjunkten Teilintervalle $(a_1,b_1),\dots,(a_n,b_n)$ von $[a,b]$ gilt:
+	\pause
+	Ist $f'\in L^1([a,b],m)$, so definiert $\d \lambda =f' \d m$ ein Maß $\lambda$ auf $[a,b]$. 
+	\pause $\lambda$ ist endlich bzw. komplex und daher stark absolut stetig bzgl. $m$ nach vorigem Satz.
+	\pause Also gibt es zu jedem $\varepsilon>0$ ein $\delta>0$, \pause sodass für jedes $N\in\NN$ \pause und für alle disjunkten Teilintervalle $(a_1,b_1),\dots,(a_N,b_N)$ von $[a,b]$ gilt:\pause
 	\begin{equation}
 		\label{eq:foo}
-		\sum_{i=1}^n b_i-a_i <\delta \implies \sum_{i=1}^n \abs{\int_{a_i}^{b_i} f'(t)\d t }<\varepsilon.\tag{$\ast$}
+		\sum_{i=1}^N b_i-a_i <\delta \pause \implies \sum_{i=1}^N \abs{\int_{a_i}^{b_i} f'(t)\d t }<\varepsilon.\tag{$\ast$}
 	\end{equation}
-	Definiere $f\colon[a,b]\to\RR$ als 
+	\pause
+	Definiere $f\colon[a,b]\to\RR$ als \pause
 	\begin{equation*}
 		f(x)\coloneqq\int_a^x f'(t)\d t, \quad x\in [a,b].
 	\end{equation*}
+	\pause
 	Dann gilt mit \eqref{eq:foo}
 	\begin{equation*}
-		\sum_{i=1}^n\abs{f(b_i)-f(a_i)}<\varepsilon.
+		\sum_{i=1}^N\abs{f(b_i)-f(a_i)}<\varepsilon.
 	\end{equation*}
 \end{frame}
 
 \begin{frame}{Absolut stetige Funktionen}
 	\begin{definition}
+		\pause
 		\input{thms/absolute-continuity-functions.tex}
 	\end{definition}
+	\pause
 	\begin{remark}
 		\begin{enumerate}
-			\item Absolut stetige Funktionen sind stetig. ($N=1$).
-   			\item Lipschitz-stetige Funktionen sind absolut stetig. ($\delta=\frac{\varepsilon}{L}$).
+			\pause \item Absolut stetige Funktionen sind stetig. \pause($N=1$).
+   			\pause \item Lipschitz-stetige Funktionen sind absolut stetig. \pause ($\delta=\frac{\varepsilon}{L}$).
+      		\pause \item Alle $f$, die einem Hauptsatz genügen sollen, müssen schon absolut stetig sein.
 		\end{enumerate}
 	\end{remark}
 \end{frame}
 
 \begin{frame}{Charakterisierung von absoluter Stetigkeit}
 	\begin{satz}
+		\pause
 		\input{thms/characterization-ac.tex}
 	\end{satz}
+	\pause
 	\begin{alertblock}{Bemerkung}
-		Die Cantorfunktion bildet eine Nullmenge auf eine Menge mit Maß $1$ ab!
+		\pause Die Cantorfunktion bildet eine Nullmenge auf eine Menge mit Maß $1$ ab!
 	\end{alertblock}
 \end{frame}
 
+% Evtl. rauslassen
 \begin{frame}{Erinnerung - Lebesguesche Differentiation}
 	\begin{definition}
 		\input{thms/nicely-shrinking.tex}
@@ -237,26 +266,32 @@
 \section{Der Hauptsatz}
 \label{Der Hauptsatz}
 
-\begin{frame}{Der Hauptsatz}
+\begin{frame}{Die Idee eines Hauptsatzes}
+	\pause
 	\begin{theorem*}
+		\pause
 		\input{thms/fundamental-theorem-ac.tex}		
 	\end{theorem*}
 \end{frame}
 
 \begin{frame}{Totalvariation}
 	\begin{definition}
+		\pause
 		\input{thms/total-variation.tex}
 	\end{definition}
 \end{frame}
 
 \begin{frame}{Satz über Totalvariation}
 	\begin{satz}
+		\pause
 		\input{thms/total-variation-is-ac.tex}
 	\end{satz}
 \end{frame}
 
-\begin{frame}{Hauptsatz für absolut stetige Funktionen}
+\begin{frame}{Der Hauptsatz für absolut stetige Funktionen}
 	\begin{theorem*}
+		\pause
+		\renewcommand{\pause}{}
 		\input{thms/fundamental-theorem-ac.tex}
 	\end{theorem*}
 \end{frame}
