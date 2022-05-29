@@ -1,5 +1,5 @@
 \documentclass[ngerman
-			%,handout
+			,handout
 			]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -38,9 +38,14 @@
 
 \newtheorem{memo}{Memo}
 \newenvironment<>{memo}{
-  \setbeamercolor{block title alerted}{fg=black, bg=yellow}
+  \setbeamercolor{block title alerted}{fg=black!70, bg=yellow!70}
   \setbeamercolor{block body alerted}{bg=yellow!25}
   \begin{alertblock}{Memo}}{\end{alertblock}}
+
+\renewenvironment{definition}{
+	\setbeamercolor{block title}{fg=black!70, bg=green!70}
+	\setbeamercolor{block body}{bg=green!25}
+	\begin{block}{Definition}}{\end{block}}
 
 \begin{document}
 
